@@ -1,10 +1,11 @@
-<script setup>
+<script setup xmlns="http://www.w3.org/1999/html">
 import PageLayout from "../layouts/PageLayout.vue"
 import DynamicForm from "../fractions/DynamicForm.vue"
 import * as Yup from 'yup'
 import {ref, watch} from "vue"
 import {useValidationErrorsStore} from "../../stores/validation_errors.js"
-import {ERROR_MESSAGES, BUTTONS} from "../../constants.js"
+import {ERROR_MESSAGES, BUTTONS, LINKS, STYLES} from "../../constants.js"
+import GoogleLink from "../fractions/GoogleLink.vue";
 
 const pwToMatch = ref('')
 const token = document.head.querySelector('meta[name="csrf-token"]').content
@@ -90,11 +91,22 @@ watch(pwToMatch, () => {
             <div class="col-lg-4 col-md-6 col-sm-10">
                 <DynamicForm :action="'/registration'" :method="'POST'" @handle-input="passwordCheck"
                              :schema="formSchema" :button_text="text"/>
+
             </div>
         </div>
+
+        <GoogleLink :link="LINKS.googleSignUp" :text="BUTTONS.googleSingUp"/>
+
     </page-layout>
+
 
 </template>
 
 <style scoped>
+.oauth {
+    background-color: v-bind('STYLES.lightGrey');
+    border: v-bind('STYLES.border');
+    border-radius: 20px;
+}
+
 </style>

@@ -37,6 +37,8 @@ export const BUTTONS = {
     addAddress: 'New address',
     saveAddress: 'Save address',
     placeOrder: 'Place order',
+    googleSingUp: 'Sign up with Google',
+    googleSingIn: 'Sign in with Google',
 }
 
 export const STYLES = {
@@ -59,4 +61,6 @@ export const LINKS = {
     order: '/order',
     cart: '/cart',
     userAddresses: '/user_addresses',
+    googleSignUp: '/auth/google/register',
+    googleSignIn: '/auth/google/login',
 }
