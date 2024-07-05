@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 use Laravel\Sanctum\HasApiTokens;
@@ -64,4 +65,8 @@ class User extends Authenticable
         return $this->hasMany(UserAddress::class);
     }
 
+    public function social_media_auth(): HasOne
+    {
+        return $this->hasOne(SocialMediaAuth::class);
+    }
 }

@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\OAuthController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserAddressController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,12 +27,20 @@ Route::middleware('guest')->group(function () {
     Route::get('/registration', function () {
         return view('register');
     });
+
     Route::post('/registration', [UserController::class, 'register']);
 
     Route::get('/login', function () {
         return view('login');
     })->name('login');
+
     Route::post('/login', [UserController::class, 'login']);
+
+    Route::get('/auth/google/login', [OAuthController::class, 'redirectToGoogleLogin']);
+
+    Route::get('/auth/google/register', [OAuthController::class, 'redirectToGoogleRegister']);
+
+    Route::get('/auth/google/callback', [OAuthController::class, 'handleGoogleCallback']);
 });
 
 Route::post('/logout', [UserController::class, 'logout']);

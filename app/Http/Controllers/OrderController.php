@@ -26,7 +26,7 @@ class OrderController extends Controller
         return view('order', ['products' => $products]);
     }
 
-    public function store(OrderCreateRequest $request)
+    public function store(OrderCreateRequest $request): void
     {
         $requestData = $request->all();
         $paymentTotal = 0;

@@ -4,7 +4,8 @@ import DynamicForm from "../fractions/DynamicForm.vue"
 import {useValidationErrorsStore} from "../../stores/validation_errors.js"
 import {ref} from "vue"
 import * as Yup from "yup"
-import {BUTTONS} from "../../constants.js"
+import {BUTTONS, LINKS} from "../../constants.js"
+import GoogleLink from "../fractions/GoogleLink.vue";
 
 const token = document.head.querySelector('meta[name="csrf-token"]').content
 
@@ -50,6 +51,8 @@ const formSchema = ref({
                 <DynamicForm :action="'/login'" :method="'POST'" :schema="formSchema" :button_text="text"/>
             </div>
         </div>
+
+        <GoogleLink :link="LINKS.googleSignIn" :text="BUTTONS.googleSingIn" />
     </page-layout>
 
 </template>

@@ -28,7 +28,7 @@ class UserAddressController extends Controller
         return response()->json($userAddresses);
     }
 
-    public function store(UserCreateRequest $request)
+    public function store(UserCreateRequest $request): JsonResponse
     {
         $requestData = $request->all();
 
