@@ -38,20 +38,27 @@ function slideTo(index) {
 
 <template>
 
+<!--    Modal gallery div-->
     <div class="modal fade w-100 h-100"
          :class="{'show d-block':productStore.modalShow}"
          tabindex="-1"
          @click.self="productStore.closeModal"
     >
         <div class="image-container p-4 row d-flex align-items-center justify-content-center">
+
+<!--            Go back to previous picture-->
             <div class="col-3 text-center">
                 <button @click="slideTo(currentSlide -1)" class="btn btn-lg"><</button>
             </div>
+
+<!--            Current image-->
             <div class="col-6">
                 <div>
                     <img :src="productStore.paths[currentSlide]" :alt="productStore.productName" class="p-2">
                 </div>
             </div>
+
+<!--            Go forth to next image-->
             <div class="col-3 text-center">
                 <button @click="slideTo(currentSlide +1)" class="btn btn-lg">></button>
             </div>
@@ -61,7 +68,6 @@ function slideTo(index) {
 </template>
 
 <style scoped>
-
 
 .modal img {
     margin: auto;
@@ -95,4 +101,5 @@ button {
     color: white;
     border-radius: 25px;
 }
+
 </style>

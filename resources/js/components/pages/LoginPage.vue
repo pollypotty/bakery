@@ -5,7 +5,7 @@ import {useValidationErrorsStore} from "../../stores/validation_errors.js"
 import {ref} from "vue"
 import * as Yup from "yup"
 import {BUTTONS, LINKS} from "../../constants.js"
-import GoogleLink from "../fractions/GoogleLink.vue";
+import GoogleLink from "../fractions/GoogleLink.vue"
 
 const token = document.head.querySelector('meta[name="csrf-token"]').content
 
@@ -13,8 +13,6 @@ const props = defineProps(['errors'])
 
 const errorsStore = useValidationErrorsStore()
 errorsStore.setValidationErrors(props.errors)
-
-const text = BUTTONS.login
 
 const formSchema = ref({
     fields: [
@@ -47,11 +45,14 @@ const formSchema = ref({
 
     <page-layout>
         <div class="row d-flex justify-content-center">
+
+<!--            Login form-->
             <div class="col-lg-4 col-md-6 col-sm-10">
-                <DynamicForm :action="'/login'" :method="'POST'" :schema="formSchema" :button_text="text"/>
+                <DynamicForm :action="'/login'" :method="'POST'" :schema="formSchema" :button_text="BUTTONS.login"/>
             </div>
         </div>
 
+<!--        Google sign in-->
         <GoogleLink :link="LINKS.googleSignIn" :text="BUTTONS.googleSingIn" />
     </page-layout>
 

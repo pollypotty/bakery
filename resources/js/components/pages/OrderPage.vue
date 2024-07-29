@@ -96,9 +96,9 @@ watch(cartStore.cartItems, () => {
 <template>
     <page-layout>
 
-        <div
-            class="date-div row container py-3 px-2 m-auto mt-5 text-light d-flex justify-content-center align-items-center">
+        <div class="date-div row container py-3 px-2 m-auto mt-5 text-light d-flex justify-content-center align-items-center">
 
+<!--            Date picker bar-->
             <div class="col-lg-3 col-md-12 mb-3 mb-md-2 text-start">
                 <label class="fs-5">Select delivery date:</label>
             </div>
@@ -111,6 +111,7 @@ watch(cartStore.cartItems, () => {
                 >
             </div>
 
+<!--            Date picker submit-->
             <div class="col-lg-2 col-md-12 mb-3 mb-md-2 ms-md-3 text-start">
                 <CustomButton :text="BUTTONS.showProducts"
                               @click="handleDateInput"
@@ -119,6 +120,7 @@ watch(cartStore.cartItems, () => {
                 />
             </div>
 
+<!--            Clear cart button-->
             <div class="col-lg-2 col-md-12 mb-3 mb-md-2 ms-md-3 text-start">
                 <CustomButton :text="BUTTONS.clearCart"
                               @click="cartStore.clearCart()"
@@ -127,6 +129,7 @@ watch(cartStore.cartItems, () => {
                 />
             </div>
 
+<!--            Cart icon-->
             <div class="col-lg-2 col-md-12 d-flex justify-content-center justify-content-md-end">
                 <div class="d-inline-block position-relative" :class="{'d-none': isShaking }">
                     <button class="items position-absolute bottom-0 start-0 h-50 disabled">{{
@@ -145,12 +148,12 @@ watch(cartStore.cartItems, () => {
                 </div>
             </div>
 
-
-
+<!--            No available products-->
             <div v-if="productStore.noAvailableProduct" class="container-fluid text-center mt-5 text-warning">
                 <h4>There are no available products for the selected delivery date.</h4>
             </div>
 
+<!--            Date change information, and pick to proceed or not-->
             <div v-if="dateChange" class="container-fluid text-center mt-5 text-warning">
                 <h4>If you chose an earlier date you can lose items from your cart.</h4>
                 <h4>Do you want to continue?</h4>
@@ -168,8 +171,10 @@ watch(cartStore.cartItems, () => {
 
         </div>
 
+<!--        Available products-->
         <product-cards :productsToShow="productStore.availableProducts" v-slot="slotProps">
 
+<!--            Quantity picker-->
             <li class="list-group-item">
                 <div class="row">
                     <div class="col-6 text-center>">
@@ -177,6 +182,8 @@ watch(cartStore.cartItems, () => {
                                type="number" class="w-50 text-center" min="1" max="50"
                         >
                     </div>
+
+<!--                    Add to cart button-->
                     <div class="col-6 text-center>">
                         <CustomButton :text="BUTTONS.addToCart"
                                       @click="addToCart(slotProps)"
@@ -186,8 +193,8 @@ watch(cartStore.cartItems, () => {
             </li>
 
         </product-cards>
-
     </page-layout>
+
 </template>
 
 <style scoped>

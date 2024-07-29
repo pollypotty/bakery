@@ -1,25 +1,28 @@
 import {defineStore} from 'pinia'
 import {useCartStore} from "./cart.js";
 
+const initialState = () => ({
+    products: true,
+    shipping: false,
+    payment: false,
+    summary: false,
+    deliveryType: "",
+    userAddresses: [],
+    addressId: -1,
+    newAddress: false,
+    addressType: null,
+    addressSaved: false,
+    newAddressDetails: [],
+    paymentType: "",
+    indexOfSavedAddress: '',
+    addressSavedMsg: false,
+    stripeKey: "",
+    stripeSuccess: false,
+    orderSuccess: false,
+});
+
 export const useCheckoutStore = defineStore('checkout', {
-    state: () => {
-        return {
-            products: true,
-            shipping: false,
-            payment: false,
-            summary: false,
-            deliveryType: "",
-            userAddresses: [],
-            addressId: -1,
-            newAddress: false,
-            addressType: null,
-            addressSaved: false,
-            newAddressDetails: [],
-            paymentType: "",
-            indexOfSavedAddress: '',
-            addressSavedMsg: false,
-        }
-    },
+    state: initialState,
     persist: true,
     actions: {
         getPaymentTotal() {
@@ -35,7 +38,19 @@ export const useCheckoutStore = defineStore('checkout', {
         getOrderItems() {
             const cartStore = useCartStore()
 
-            return cartStore.cartItems.map(({ productId, quantity }) => ({ productId, quantity }))
-        }
+            return cartStore.cartItems.map(({productId, quantity}) => ({productId, quantity}))
+        },
+        resetState() {
+            Object.assign(this.$state, initialState())
+        },
+        setStripeKey(key) {
+            this.stripeKey = key
+        },
+        setOrderSuccess(value) {
+            this.orderSuccess = value
+        },
+        resetOrderSuccess() {
+            this.orderSuccess = false
+        },
     }
 })

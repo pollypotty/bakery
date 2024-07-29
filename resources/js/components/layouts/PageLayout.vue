@@ -6,17 +6,24 @@ import {FILES} from "../../constants.js"
 </script>
 
 <template>
+
+<!--    Page background image-->
     <div class="container-fluid h-100 w-100 mx-0 p-0 bg"
          :style='{ backgroundImage: "url(" + FILES.backgroundImagePath + ")" }'
     >
-        <app-navbar></app-navbar>
 
+<!--        Navbar-->
+        <AppNavbar/>
+
+<!--        Page content-->
         <slot/>
+    </div>
 
-    </div>
+<!--    Footer-->
     <div class="footer-div w-100">
-        <app-footer></app-footer>
+        <AppFooter/>
     </div>
+
 </template>
 
 <style scoped>

@@ -5,6 +5,7 @@ import {LINKS} from "../../constants.js"
 
 <template>
 
+<!--    Navbar links only shown to guest user-->
     <a class="nav-link" :href="LINKS.login">Login</a>
     <a class="nav-link" :href="LINKS.registration">Register</a>
 

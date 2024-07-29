@@ -1,12 +1,12 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\OAuthController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\UserAddressController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,9 +52,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/order', [OrderController::class, 'index']);
 
-    Route::get('/cart', function () {
-        return view('cart');
-    });
+    Route::get('/cart',  [CartController::class, 'index']);
+
+    Route::get('/payment', [PaymentController::class, 'createPayment']);
 });
 
 Route::get('/products', [ProductController::class, 'index']);

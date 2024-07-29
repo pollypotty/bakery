@@ -9,6 +9,8 @@ const props = defineProps({
 </script>
 
 <template>
+
+<!--    Google link to sign in or sign up-->
     <div class="row d-flex justify-content-center">
         <div class="col-lg-4 col-md-6 col-sm-10">
             <div class="oauth d-flex flex-column align-items-center py-3 px-2 mt-5 text-light">
@@ -31,6 +33,8 @@ const props = defineProps({
                                     <path fill="none" d="M0 0h48v48H0z"></path>
                                 </svg>
                             </div>
+
+<!--                            The text of the link-->
                             <span class="gsi-material-button-contents">{{ props.text }}</span>
                             <span style="display: none;">{{ props.text }}</span>
                         </div>
@@ -43,6 +47,7 @@ const props = defineProps({
 </template>
 
 <style scoped>
+
 .gsi-material-button {
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -152,4 +157,5 @@ const props = defineProps({
     border: v-bind('STYLES.border');
     border-radius: 20px;
 }
+
 </style>

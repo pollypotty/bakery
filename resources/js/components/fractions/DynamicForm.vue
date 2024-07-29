@@ -23,23 +23,30 @@ const emits = defineEmits([
 
 <template>
 
+<!--    Dynamic form component-->
     <div class="form-div container-fluid p-5 mt-5 text-light col-12 text-center">
         <Form :action="action" :method="method">
             <div>
 
+<!--                Errors coming from backend validation-->
                 <div v-if="errors && errors.length > 0" class="alert alert-danger">
                     <div v-for="error in errors" :key="error" class="text-center">
                         {{ error }}
                     </div>
                 </div>
 
+<!--                Form fields-->
                 <div v-for="{ as, name, label, ...attrs } in schema.fields" :key="name" class="m-1">
                     <label :for="name" class="form-label fs-5">{{ label }}</label>
                     <Field :as="as" :id="name" :name="name" v-bind="attrs"
                            @blur="$emit('handleInput', name, $event.target.value)"
                            class="form-control"/>
+
+<!--                    Error messages for each field coming from frontend validation-->
                     <ErrorMessage :name="name" class="text-warning"/>
                 </div>
+
+<!--                Submit button-->
                 <div class="row d-flex justify-content-center">
                     <CustomButton :text="button_text" :is-large="true" type="submit"/>
                 </div>
@@ -56,4 +63,5 @@ const emits = defineEmits([
     border: v-bind('STYLES.border');
     border-radius: 20px;
 }
+
 </style>

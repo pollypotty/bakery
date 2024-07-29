@@ -14,6 +14,19 @@ export const ERROR_MESSAGES = {
     formatError: 'invalid format',
     addressType: 'Please chose from the options for us, how to handle the provided address.',
     addAddress: 'Fill out the form and press save address to proceed with payment!',
+    cardNumber: 'Card number is a required field',
+    cardNumberFormat: 'Card number is not valid',
+    cvc: 'CVC is a required field',
+    cvcFormat: 'CVC must be 3 digits',
+    requiredFields: 'All fields are required',
+    wrongDate: 'Invalid date format',
+    stripeInitError: 'Failed to initialize Stripe elements',
+    stripeError: 'An error occurred while processing the payment',
+    choosePayment: 'Please choose a payment option to continue to checkout.',
+    payWithStripe: 'Proceed with online payment to continue to checkout.',
+    failedOrder: 'An unexpected error occurred. Please try again.',
+    unexpectedError: 'An unexpected error occurred.',
+    noCardElement: 'Card element not found.',
 }
 
 export const FILES = {
@@ -39,6 +52,7 @@ export const BUTTONS = {
     placeOrder: 'Place order',
     googleSingUp: 'Sign up with Google',
     googleSingIn: 'Sign in with Google',
+    proceedPayment: 'Pay',
 }
 
 export const STYLES = {
@@ -49,6 +63,8 @@ export const STYLES = {
     modalImgContainer: 'rgba(0, 0, 0, 0.6)',
     modalContainer: 'rgba(0, 0, 0, 0.4)',
     warningYellow: '#ffc107',
+    inputYellow: '#f7fab2',
+    successGreen: '#2b702b',
 }
 
 export const LINKS = {
@@ -63,4 +79,5 @@ export const LINKS = {
     userAddresses: '/user_addresses',
     googleSignUp: '/auth/google/register',
     googleSignIn: '/auth/google/login',
+    stripePayment: '/create-payment-intent',
 }
