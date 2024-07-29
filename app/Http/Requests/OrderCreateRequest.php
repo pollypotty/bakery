@@ -91,6 +91,11 @@ class OrderCreateRequest extends FormRequest
                 'integer',
                 'gt:0',
             ],
+            'paymentTotal' => [
+                'required',
+                'numeric',
+                'gt:0',
+            ]
         ];
     }
 }

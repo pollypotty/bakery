@@ -1,6 +1,6 @@
 <script setup>
 import {STYLES} from "../../constants.js"
-import {boolean} from "yup";
+import {boolean} from "yup"
 
  const props = defineProps({
      text: String,
@@ -15,6 +15,7 @@ import {boolean} from "yup";
 
 <template>
 
+<!--    Custom button, choose text and size-->
 <button :type="type" :class="['btn', {'btn-lg': isLarge}]">{{text}}</button>
 
 </template>
@@ -27,4 +28,5 @@ button {
     color: white;
     border-radius: 20px;
 }
+
 </style>

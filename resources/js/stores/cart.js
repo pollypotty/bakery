@@ -2,6 +2,7 @@ import {defineStore} from 'pinia'
 import {useProductStore} from "./product.js";
 import {useDateStore} from "./date.js";
 import {LINKS} from "../constants.js";
+import {useCheckoutStore} from "./checkout.js";
 
 export const useCartStore = defineStore('cart', {
     state: () => {
@@ -83,6 +84,7 @@ export const useCartStore = defineStore('cart', {
         clearCart() {
             this.cartItems = []
             this.deliveryDate = null
+            useCheckoutStore().resetState()
         }
     }
 })

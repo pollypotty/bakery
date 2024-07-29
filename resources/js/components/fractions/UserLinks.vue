@@ -17,6 +17,7 @@ const logout = () => {
 
 <template>
 
+<!--    Navbar links for authenticated users-->
     <a class="nav-link" :href="LINKS.order">Order</a>
     <a class="nav-link" :href="LINKS.profile">Profile</a>
     <a class="nav-link" href="#" @click="logout">Log out</a>

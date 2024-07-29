@@ -2,6 +2,6 @@
 
 @section("content")
 
-    <cart-page></cart-page>
+    <cart-page :stripe-key="{{ json_encode($stripeKey) }}"></cart-page>
 
 @endsection

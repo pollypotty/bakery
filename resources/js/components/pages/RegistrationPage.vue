@@ -5,7 +5,7 @@ import * as Yup from 'yup'
 import {ref, watch} from "vue"
 import {useValidationErrorsStore} from "../../stores/validation_errors.js"
 import {ERROR_MESSAGES, BUTTONS, LINKS, STYLES} from "../../constants.js"
-import GoogleLink from "../fractions/GoogleLink.vue";
+import GoogleLink from "../fractions/GoogleLink.vue"
 
 const pwToMatch = ref('')
 const token = document.head.querySelector('meta[name="csrf-token"]').content
@@ -20,8 +20,6 @@ const passwordCheck = (name, value) => {
         pwToMatch.value = value
     }
 }
-
-const text = BUTTONS.registration
 
 const formSchema = ref({
     fields: [
@@ -89,16 +87,18 @@ watch(pwToMatch, () => {
     <page-layout>
         <div class="row d-flex justify-content-center">
             <div class="col-lg-4 col-md-6 col-sm-10">
+
+<!--            Registration form-->
                 <DynamicForm :action="'/registration'" :method="'POST'" @handle-input="passwordCheck"
-                             :schema="formSchema" :button_text="text"/>
+                             :schema="formSchema" :button_text="BUTTONS.registration"/>
 
             </div>
         </div>
 
+<!--        Google sign up-->
         <GoogleLink :link="LINKS.googleSignUp" :text="BUTTONS.googleSingUp"/>
 
     </page-layout>
-
 
 </template>
 

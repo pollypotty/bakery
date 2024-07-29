@@ -1,5 +1,5 @@
 <script setup>
-import {BUTTONS, ERROR_MESSAGES, LINKS, STYLES} from "../../constants.js"
+import {BUTTONS, LINKS, STYLES} from "../../constants.js"
 import {useCheckoutStore} from "../../stores/checkout.js"
 import CustomButton from "./CustomButton.vue"
 import AddressForm from "./AddressForm.vue"
@@ -38,12 +38,14 @@ function hideNewAddress() {
 
     <div class="container-fluid">
 
+<!--        Shipping options-->
         <div class="row items-head text-light p-2 mt-3 mb-5 mx-2 text-start col-10">
             <h4>Choose from the shipping options:</h4>
         </div>
 
         <div class="text-dark row">
 
+<!--            Pick up point-->
             <div class="col-md-6 col-sm-12">
                 <div class="row">
                     <div class="col-1 text-end">
@@ -64,6 +66,7 @@ function hideNewAddress() {
                 </div>
             </div>
 
+<!--            Home delivery-->
             <div class="col-md-6 col-sm-12">
                 <div class="row">
                     <div class="col-1 text-end">
@@ -87,7 +90,10 @@ function hideNewAddress() {
 
         </div>
 
+<!--        Home delivery addresses-->
         <div v-if="checkoutStore.deliveryType === 'HOME'" class="text-dark">
+
+<!--            Choose from previously saved addresses-->
             <div v-if="checkoutStore.userAddresses.length > 0" class="text-start ms-5">
                 <select v-model="checkoutStore.addressId" @input="hideNewAddress">
                     <option value="-1">Select address:</option>
@@ -96,12 +102,18 @@ function hideNewAddress() {
                     </option>
                 </select>
             </div>
+
+<!--            Button to show from to add new address-->
             <div class="text-start ms-5 my-3">
                 <CustomButton :text="BUTTONS.addAddress" @click="showAddressForm"/>
             </div>
+
+<!--            Choose address type-->
             <div v-if="checkoutStore.newAddress">
                 <div class="col-lg-6 col-md-10 col-sm-12 mb-5">
                     <div class="row">
+
+<!--                        One time-->
                         <div class="col-2 text-end">
                             <input
                                 v-model="checkoutStore.addressType"
@@ -112,6 +124,7 @@ function hideNewAddress() {
                         </div>
                     </div>
 
+<!--                    Delivery-->
                     <div class="row">
                         <div class="col-2 text-end">
                             <input
@@ -123,6 +136,7 @@ function hideNewAddress() {
                         </div>
                     </div>
 
+<!--                    Billing and delivery-->
                     <div class="row">
                         <div class="col-2 text-end">
                             <input
@@ -135,17 +149,16 @@ function hideNewAddress() {
                     </div>
                 </div>
 
+<!--                Address Form component-->
                     <AddressForm/>
 
+<!--                Success message-->
                 <div class="my-2" v-if="checkoutStore.addressSavedMsg">
-                    <h5>Address saved successfully, you can proceed with payment.</h5>
+                    <h5 class="successMsg">Address saved successfully, you can proceed with the payment.</h5>
                 </div>
-
             </div>
         </div>
-
     </div>
-
 
 </template>
 
@@ -153,10 +166,11 @@ function hideNewAddress() {
 
 .items-head {
     background-color: v-bind('STYLES.lightGrey');
+    border-radius: 20px;
 }
 
-.items-head {
-    border-radius: 20px;
+.successMsg {
+    color: #2b702b;
 }
 
 </style>

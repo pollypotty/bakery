@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\UserAddressController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -21,4 +22,5 @@ Route::middleware('web')->group(function () {
     Route::get('/user_addresses', [UserAddressController::class, 'getUserAddresses']);
     Route::post('/user_addresses', [UserAddressController::class, 'store']);
     Route::post('/order', [OrderController::class, 'store']);
+    Route::post('/create-payment-intent', [PaymentController::class, 'createPaymentIntent']);
 });
