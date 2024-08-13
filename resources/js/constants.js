@@ -29,6 +29,11 @@ export const ERROR_MESSAGES = {
     noCardElement: 'Card element not found.',
 }
 
+export const SUCCESS_MESSAGES = {
+    orderSuccess: 'Your order has been successfully placed! Thank you for shopping from PROOFED.',
+    loginSuccess: 'Welcome on PROOFED!',
+}
+
 export const FILES = {
     placeholderImagePath: '/images/product_placeholder_image.png',
     backgroundImagePath: '/images/background.jpg',

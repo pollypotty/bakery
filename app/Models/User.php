@@ -22,6 +22,7 @@ use Illuminate\Foundation\Auth\User as Authenticable;
  * @property string|null $remember_token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @method static where(string $string, string $string1)
  */
 
 class User extends Authenticable

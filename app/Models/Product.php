@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int $prepare_days
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @method static findOrFail(mixed $productId)
  */
 
 class Product extends Model

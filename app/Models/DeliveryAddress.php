@@ -14,10 +14,16 @@ use Illuminate\Support\Carbon;
  * @property int $user_address_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @method static create(array $data)
  */
 
 
 class DeliveryAddress extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'order_id',
+        'user_address_id',
+    ];
 }

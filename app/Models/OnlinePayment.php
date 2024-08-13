@@ -16,7 +16,6 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $updated_at
  */
 
-
 class OnlinePayment extends Model
 {
     use HasFactory;

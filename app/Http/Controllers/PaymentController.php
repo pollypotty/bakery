@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\PaymentService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -11,6 +12,14 @@ use Stripe\Stripe;
 
 class PaymentController extends Controller
 {
+
+    protected PaymentService $paymentService;
+
+    public function __construct()
+    {
+        $this->paymentService = new PaymentService();
+    }
+
     public function createPaymentIntent(Request $request): JsonResponse
     {
         try {
@@ -18,19 +27,18 @@ class PaymentController extends Controller
                 'amount' => 'required|integer|min:1',
             ]);
 
-            Stripe::setApiKey(env('STRIPE_SECRET'));
+            $clientSecret = $this->paymentService->createPaymentIntent($validatedData['amount']);
 
-            $paymentIntent = PaymentIntent::create([
-                'amount' => $validatedData['amount'] * 100,
-                'currency' => 'eur',
-                'metadata' => ['integration_check' => 'accept_a_payment'],
-            ]);
+            if ($clientSecret === null) {
+                return response()->json([], 500);
+            }
 
             return response()->json([
-                'clientSecret' => $paymentIntent->client_secret,
+                'clientSecret' => $clientSecret,
             ]);
-        } catch (ApiErrorException|\Exception $e) {
-            Log::error($e);
+
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
 
             return response()->json([], 500);
         }
