@@ -21,6 +21,7 @@ use Illuminate\Support\Carbon;
  * @property string $additional_information
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @method static create(array $requestData)
  */
 
 class UserAddress extends Model
@@ -31,4 +32,15 @@ class UserAddress extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    protected $fillable = [
+        'user_id',
+        'address_type',
+        'zip_code',
+        'city',
+        'line1',
+        'line2',
+        'building_number',
+        'additional_information',
+    ];
 }

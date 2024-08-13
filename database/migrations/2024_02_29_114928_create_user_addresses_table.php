@@ -20,7 +20,6 @@ return new class extends Migration {
                 AddressType::DELIVERY->value,
                 AddressType::ONE_TIME->value,
             ]);
-            $table->foreignId('country_id')->constrained();
             $table->string('zip_code', 10);
             $table->string('city', 30);
             $table->string('line1', 30);

@@ -17,10 +17,18 @@ use Illuminate\Support\Carbon;
  * @property string $price_per_item
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @method static create(array $data)
  */
 
 
 class OrderItem extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'order_id',
+        'product_id',
+        'quantity',
+        'price_per_item',
+    ];
 }

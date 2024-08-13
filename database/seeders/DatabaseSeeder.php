@@ -19,6 +19,5 @@ class DatabaseSeeder extends Seeder
         Product::factory(5)->create();
         User::factory(10)->create();
         UserAddress::factory(5)->create();
-        Country::factory(3)->create();
     }
 }

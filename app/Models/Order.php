@@ -18,9 +18,19 @@ use Illuminate\Support\Carbon;
  * @property string $order_status
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @method static create(array $data)
  */
 
 class Order extends Model
 {
     use HasFactory;
+
+     protected $fillable = [
+        'user_id',
+        'delivery_type',
+        'payment_type',
+        'payment_total',
+        'delivery_date',
+        'order_status',
+    ];
 }

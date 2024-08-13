@@ -3,13 +3,9 @@
 namespace Database\Factories;
 
 use App\Enums\AddressType;
-use App\Models\Country;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
- */
 class UserAddressFactory extends Factory
 {
     /**
@@ -21,7 +17,6 @@ class UserAddressFactory extends Factory
     {
 
         $user = User::query()->inRandomOrder()->first() ?: User::factory()->create();
-        $country = Country::query()->inRandomOrder()->first() ?: Country::factory()->create();
         return [
             'user_id' => $user->id,
             'address_type' => fake()->randomElement([
@@ -30,7 +25,6 @@ class UserAddressFactory extends Factory
                 AddressType::DELIVERY->value,
                 AddressType::ONE_TIME->value,
             ]),
-            'country_id' => $country->id,
             'zip_code' => fake()->numberBetween(1000,9999),
             'city' => fake()->city(),
             'line1' => fake()->realTextBetween(10,30),

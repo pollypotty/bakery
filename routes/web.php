@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\OAuthController;
+use App\Http\Controllers\Auth\RegistrationController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\OAuthController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,17 +24,13 @@ Route::get('/', function () {
 });
 
 Route::middleware('guest')->group(function () {
-    Route::get('/registration', function () {
-        return view('register');
-    });
+    Route::get('/registration', [RegistrationController::class, 'index'])->name('registration');
 
-    Route::post('/registration', [UserController::class, 'register']);
+    Route::post('/registration', [RegistrationController::class, 'register']);
 
-    Route::get('/login', function () {
-        return view('login');
-    })->name('login');
+    Route::get('/login', [AuthController::class, 'index'])->name('login');
 
-    Route::post('/login', [UserController::class, 'login']);
+    Route::post('/login', [AuthController::class, 'login']);
 
     Route::get('/auth/google/login', [OAuthController::class, 'redirectToGoogleLogin']);
 
@@ -43,9 +39,9 @@ Route::middleware('guest')->group(function () {
     Route::get('/auth/google/callback', [OAuthController::class, 'handleGoogleCallback']);
 });
 
-Route::post('/logout', [UserController::class, 'logout']);
-
 Route::middleware('auth')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+
     Route::get('/profile', function () {
         return view('profile');
     })->name('profile');
@@ -53,8 +49,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/order', [OrderController::class, 'index']);
 
     Route::get('/cart',  [CartController::class, 'index']);
-
-    Route::get('/payment', [PaymentController::class, 'createPayment']);
 });
 
 Route::get('/products', [ProductController::class, 'index']);
