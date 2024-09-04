@@ -19,25 +19,34 @@ export const ERROR_MESSAGES = {
     cvc: 'CVC is a required field',
     cvcFormat: 'CVC must be 3 digits',
     requiredFields: 'All fields are required',
+    requiredField: 'This field is required',
     wrongDate: 'Invalid date format',
     stripeInitError: 'Failed to initialize Stripe elements',
     stripeError: 'An error occurred while processing the payment',
-    choosePayment: 'Please choose a payment option to continue to checkout.',
-    payWithStripe: 'Proceed with online payment to continue to checkout.',
-    failedOrder: 'An unexpected error occurred. Please try again.',
-    unexpectedError: 'An unexpected error occurred.',
+    choosePayment: 'Please choose a payment option to continue to order.',
+    payWithStripe: 'Proceed with online payment to continue to order.',
+    unexpectedError: 'An unexpected error occurred. Please try again.',
     noCardElement: 'Card element not found.',
+    invalidPrepDays: 'Prep days must be a whole number greater than 0.',
+    invalidPrice: 'Price must be in the format xx.xx (e.g., 10.00).',
+    nameRequired: 'Name is required and must be less than 30 characters.',
+    descriptionRequired: 'Description is required and must be less than 255 characters.',
 }
 
 export const SUCCESS_MESSAGES = {
     orderSuccess: 'Your order has been successfully placed! Thank you for shopping from PROOFED.',
     loginSuccess: 'Welcome on PROOFED!',
+    confirmDeletion: 'Do you really want to delete the product?',
+    editSuccess: 'You have successfully edited the product: ',
+    deleteSuccess: 'You have successfully deleted the product: ',
+    productSaveSuccess: 'You have successfully saved new product: '
 }
 
 export const FILES = {
     placeholderImagePath: '/images/product_placeholder_image.png',
     backgroundImagePath: '/images/background.jpg',
     cartImage: '/images/cart_icon.png',
+    adminBackgroundImagePath: '/images/admin_bg.jpg',
 }
 
 export const BUTTONS = {
@@ -58,6 +67,11 @@ export const BUTTONS = {
     googleSingUp: 'Sign up with Google',
     googleSingIn: 'Sign in with Google',
     proceedPayment: 'Pay',
+    edit: 'Edit',
+    delete: 'Delete',
+    save: 'Save',
+    cancel: 'Cancel',
+    newProduct: 'Add new product',
 }
 
 export const STYLES = {
@@ -70,6 +84,8 @@ export const STYLES = {
     warningYellow: '#ffc107',
     inputYellow: '#f7fab2',
     successGreen: '#2b702b',
+    buttonGreen: '#097b09',
+    buttonRed: '#9b1717'
 }
 
 export const LINKS = {
@@ -85,4 +101,6 @@ export const LINKS = {
     googleSignUp: '/auth/google/register',
     googleSignIn: '/auth/google/login',
     stripePayment: '/create-payment-intent',
+    adminLogin: '/admin/login',
+    adminLogout: '/admin/logout',
 }

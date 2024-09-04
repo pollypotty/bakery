@@ -21,7 +21,7 @@ const initialState = () => ({
     orderSuccess: false,
 });
 
-export const useCheckoutStore = defineStore('checkout', {
+export const useCheckoutStore = defineStore('order', {
     state: initialState,
     persist: true,
     actions: {

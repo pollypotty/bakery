@@ -21,6 +21,7 @@ class ProductFactory extends Factory
             'description' => fake()->realTextBetween(120),
             'price' => fake()->numberBetween(5,20),
             'prepare_days' => fake()->numberBetween(2,5),
+            'availability' => fake()->numberBetween(0,1),
         ];
     }
 }

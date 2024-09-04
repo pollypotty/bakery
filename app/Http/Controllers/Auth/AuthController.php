@@ -24,7 +24,7 @@ class AuthController extends Controller
 
     public function index(): Factory|\Illuminate\Foundation\Application|View|Application
     {
-        return view('login');
+        return view('auth.login');
     }
 
     public function login(LoginRequest $request): \Illuminate\Foundation\Application|Redirector|RedirectResponse|Application

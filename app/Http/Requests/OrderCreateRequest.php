@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use App\Enums\DeliveryType;
 use App\Enums\PaymentType;
-use App\Models\UserAddress;
 use Carbon\Carbon;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;

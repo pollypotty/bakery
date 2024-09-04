@@ -22,6 +22,7 @@ their Google accounts.
 - [ ] Flowchart
 
 ## Technological Overview
+
 * Frontend technologies: HTML, CSS, Bootstrap, JavaScript, Vue3
 * Frontend packages:
     * Flash messages: @smartweb/vue-flash-message
@@ -32,7 +33,6 @@ their Google accounts.
 * Backend - Laravel 10:
     * Extensions: Socialite, Stripe
 * Database: MySQL
-
 
 ## Installation
 
@@ -67,7 +67,7 @@ Make sure you have the following installed:
     -[ ] database settings -> DB_DATABASE, DB_USERNAME, DB_PASSWORD
     - [ ] google api details -> GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
     -[ ] stripe api details -> STRIPE_KEY, STRIPE_SECRET
-5. 
+5.
 6. Generate application key
     ```sh
    ./vendor/bin/sail artisan key:generate
@@ -106,8 +106,8 @@ Database [relations visualization](docs/database/database_schema.png) <br>
 
 |                  FEATURE                  |        ROUTE         | METHOD | PUBLIC | AUTHENTICATED USER | ADMIN |
 |:-----------------------------------------:|:--------------------:|:------:|:------:|:------------------:|:-----:|
-|              visit home page              |         '/'          |  get   |   X    |         X          |   X   |
-|            visit products page            |     '/products'      |  get   |   X    |         X          |   X   |
+|              visit home page              |         '/'          |  get   |   X    |         X          |       |
+|            visit products page            |     '/products'      |  get   |   X    |         X          |       |
 |          visit registration page          |   '/registration'    |  get   |   X    |                    |       |
 |             register new user             |   '/registration'    |  post  |   X    |                    |       |
 |             visit login page              |       /'login'       |  get   |   X    |                    |       |
@@ -117,6 +117,11 @@ Database [relations visualization](docs/database/database_schema.png) <br>
 |            go to profile page             |      '/profile'      |  get   |        |         X          |       |
 |             go to order page              |       '/order'       |  get   |        |         X          |       |
 |              go to cart page              |       '/cart'        |  get   |        |         X          |       |
+|          go to admin login page           |    '/admin/login'    |  get   |   X    |                    |       |
+|              log in as admin              |    '/admin/login'    |  post  |   X    |                    |       |
+|        go to admin dashboard page         |  '/admin/dashboard'  |  get   |        |                    |   X   |
+|               admin log out               |   '/admin/logout'    |  post  |        |                    |   X   |
+|         go to admin products page         |  '/admin/products'   |  get   |        |                    |   X   |
 
 ### API Routes
 
@@ -126,6 +131,9 @@ Database [relations visualization](docs/database/database_schema.png) <br>
 |                  save new address                   |    '/user_addresses'     |  post  |        |         X          |       |
 |                    create order                     |         '/order'         |  post  |        |         X          |       |
 |               initiate online payment               | '/create-payment-intent' |  post  |        |         X          |       |
+|                    edit product                     |  '/products/{product}'   | patch  |        |                    |   X   |
+|                   delete product                    |  '/products/{product}'   | delete |        |                    |   X   |
+|                   create product                    |       '/products'        |  post  |        |                    |   X   |        
 
 ## Flowchart
 

@@ -22,6 +22,12 @@ export const useProductStore = defineStore('product', {
         setProducts(products) {
             this.products = products
         },
+        getProducts() {
+            return [...this.products].reverse()
+        },
+        getAvailableProducts() {
+            return this.products.filter(product => product.availability !== 0)
+        },
         getFeatureImage(product_images) {
             this.setFeatureImage(product_images)
             return this.featureImagePath
@@ -95,6 +101,19 @@ export const useProductStore = defineStore('product', {
         getNameOfProduct(product_id) {
             const product = this.products.find(product => product.id === product_id)
             return product.name
-        }
+        },
+        updateProduct(updatedProduct) {
+            const index = this.products.findIndex(product => product.id === updatedProduct.id)
+
+            if (index !== -1) {
+                this.products[index] = { ...updatedProduct, availability: Boolean(updatedProduct.availability) }
+            }
+        },
+        deleteProduct(productId) {
+            this.products = this.products.filter(product => product.id !== productId)
+        },
+        addProduct(productData) {
+            this.products.push(productData)
+        },
     }
 })

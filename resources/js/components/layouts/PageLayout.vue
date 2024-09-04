@@ -1,6 +1,6 @@
 <script setup>
-import AppNavbar from "../fractions/AppNavbar.vue"
-import AppFooter from "../fractions/AppFooter.vue"
+import AppNavbar from "../fractions/navbars_and_footer/AppNavbar.vue"
+import AppFooter from "../fractions/navbars_and_footer/AppFooter.vue"
 import {FILES} from "../../constants.js"
 
 </script>

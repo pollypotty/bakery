@@ -15,14 +15,24 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $description
  * @property string $price
  * @property int $prepare_days
+ * @property boolean $availability
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @method static findOrFail(mixed $productId)
+ * @method static create($requestData)
  */
 
 class Product extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'prepare_days',
+        'availability',
+    ];
 
     public function product_images(): HasMany
     {
