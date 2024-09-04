@@ -17,4 +17,8 @@ return [
     'address_save_fail' => 'Failed to save address.',
     'order_saved' => 'Order processed successfully.',
     'order_save_failed' => 'There was a problem processing your order.',
+    'invalid_admin_credentials' => "Invalid admin credentials.",
+    'prod_not_found' => 'Product not found.',
+    'db_error' => 'Database error occurred.',
+    'unexpected_error' => 'An unexpected error occurred.'
 ];

@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminAuthenticationController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\OAuthController;
 use App\Http\Controllers\Auth\RegistrationController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Order\CartController;
+use App\Http\Controllers\Order\OrderController;
+use App\Http\Controllers\Product\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +24,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
+});
+
+Route::get('/products', [ProductController::class, 'index']);
+
+Route::prefix('admin')->group(function () {
+    Route::get('/login', [AdminAuthenticationController::class, 'index'])->name('admin.login');
+
+    Route::post('/login', [AdminAuthenticationController::class, 'login']);
+
+    Route::middleware('admin')->group(function () {
+        Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+
+        Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+
+        Route::post('/logout', [AdminAuthenticationController::class, 'logout'])->name('admin.logout');
+
+        Route::get('/products', [ProductController::class, 'index']);
+    });
 });
 
 Route::middleware('guest')->group(function () {
@@ -48,7 +69,5 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/order', [OrderController::class, 'index']);
 
-    Route::get('/cart',  [CartController::class, 'index']);
+    Route::get('/cart', [CartController::class, 'index']);
 });
-
-Route::get('/products', [ProductController::class, 'index']);

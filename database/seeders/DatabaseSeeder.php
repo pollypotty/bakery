@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Country;
 use App\Models\Product;
+use App\Models\ProductImage;
 use App\Models\User;
 use App\Models\UserAddress;
 use Illuminate\Database\Seeder;
@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         Product::factory(5)->create();
         User::factory(10)->create();
         UserAddress::factory(5)->create();
+        ProductImage::factory(5)->create();
     }
 }

@@ -22,7 +22,7 @@ class RegistrationController extends Controller
 
     public function index(): Factory|\Illuminate\Foundation\Application|View|Application
     {
-        return view('register');
+        return view('auth.register');
     }
 
     public function register(RegisterRequest $request): Application|RedirectResponse|Redirector|\Illuminate\Foundation\Application
